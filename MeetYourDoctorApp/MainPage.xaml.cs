@@ -26,5 +26,10 @@ namespace MeetYourDoctorApp
         {
             this.InitializeComponent();
         }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoginBtn.IsEnabled = true;
+        }
     }
 }

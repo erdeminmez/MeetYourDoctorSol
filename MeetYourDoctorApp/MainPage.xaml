@@ -8,7 +8,110 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Style x:Name="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Height" Value="45"></Setter>
+        </Style>
+        <Style x:Name="LoginButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Height" Value="45"></Setter>
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="Background" Value="LightSkyBlue"></Setter>
+        </Style>
+        <Style x:Name="RegisterButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Height" Value="45"></Setter>
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="Background" Value="DeepSkyBlue"></Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="48"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="5"
+                   FontWeight="Bold"
+                   >MEET YOUR DOCTOR
+        </TextBlock>
+
+        <Frame x:Name="NavigationFrame" Grid.Row="1" Grid.RowSpan="7"></Frame>
+        
+        <Image Grid.Row="1"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Stretch"
+               Margin="5"
+               Source="Assets\Images\LoginImage.png">
+        </Image>
+
+        <TextBox x:Name="UsernameTB" 
+                 Grid.Row="2"
+                 PlaceholderText="Username"
+                 Style="{StaticResource TextBoxStyle}">
+        </TextBox>
+
+        <TextBox x:Name="PasswordTB"
+                 Grid.Row="3"                 
+                 PlaceholderText="Password"
+                 Style="{StaticResource TextBoxStyle}">
+        </TextBox>
+
+        <ComboBox x:Name="UserTypeCB"
+                  Grid.Row="4"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Width="300"
+                  Height="45"
+                  PlaceholderText="User Type"
+                  FontSize="20" SelectionChanged="OnSelectionChanged">
+            <ComboBoxItem Content="Doctor"></ComboBoxItem>
+            <ComboBoxItem Content="Patient"></ComboBoxItem>
+        </ComboBox>
+
+        <Button x:Name="LoginBtn"
+                Grid.Row="5"
+                Style="{StaticResource LoginButtonStyle}"
+                IsEnabled="False">Login
+        </Button>
+
+        <Button x:Name="CreateDoctorBtn"
+                Grid.Row="6"
+                Style="{StaticResource RegisterButtonStyle}"
+                >Create Doctor Account
+        </Button>
+
+        <Button x:Name="CreatePatientBtn"
+                Grid.Row="7"
+                Style="{StaticResource RegisterButtonStyle}"
+                >Create Patient Account
+        </Button>
+        
+        
 
     </Grid>
 </Page>
