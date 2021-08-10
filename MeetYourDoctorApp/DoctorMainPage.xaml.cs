@@ -41,6 +41,10 @@ namespace MeetYourDoctorApp
             {
                 DoctorNavigationFrame.Navigate(typeof(MySchedulePage));
             }
+            else if (sender.SelectedItem == AppointmentRequests)
+            {
+                DoctorNavigationFrame.Navigate(typeof(AppointmentRequestsPage));
+            }
         }
     }
 }
