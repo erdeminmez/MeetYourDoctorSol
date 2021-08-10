@@ -34,5 +34,13 @@ namespace MeetYourDoctorApp
                 Frame.GoBack();
             }
         }
+
+        private void OnNavigationRequested(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            if (sender.SelectedItem == MySchedule)
+            {
+                DoctorNavigationFrame.Navigate(typeof(MySchedulePage));
+            }
+        }
     }
 }

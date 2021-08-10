@@ -18,7 +18,7 @@
                    >MEET YOUR DOCTOR
         </TextBlock>
         
-        <NavigationView Grid.Row="1">
+        <NavigationView Grid.Row="1" ItemInvoked="OnNavigationRequested">
 
             <Frame x:Name="DoctorNavigationFrame"></Frame>
             
