@@ -90,7 +90,7 @@
         <Button x:Name="LoginBtn"
                 Grid.Row="5"
                 Style="{StaticResource LoginButtonStyle}"
-                IsEnabled="False" Click="LoginBtn_Click">Login
+                IsEnabled="False" Click="OnLogin">Login
         </Button>
 
         <Button x:Name="CreateDoctorBtn"

@@ -32,9 +32,9 @@ namespace MeetYourDoctorApp
             LoginBtn.IsEnabled = true;
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private void OnLogin(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(DoctorMainPage));
         }
 
         private void OnCreateDoctorAcc(object sender, RoutedEventArgs e)
