@@ -101,7 +101,7 @@
 
         <Button x:Name="CreatePatientBtn"
                 Grid.Row="7"
-                Style="{StaticResource RegisterButtonStyle}"
+                Style="{StaticResource RegisterButtonStyle}" Click="OnCreatePatientAcc"
                 >Create Patient Account
         </Button>
         

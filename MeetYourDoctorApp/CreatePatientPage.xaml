@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="MeetYourDoctorApp.CreateDoctorPage"
+    x:Class="MeetYourDoctorApp.CreatePatientPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MeetYourDoctorApp"
@@ -24,9 +24,9 @@
         <TextBlock Style="{StaticResource TitleStyle}"
                    >MEET YOUR DOCTOR
         </TextBlock>
-        
+
         <TextBlock Grid.Row="1" 
-                   Text="CREATE DOCTOR ACCOUNT"
+                   Text="CREATE PATIENT ACCOUNT"
                    Style="{StaticResource CreateAccountTitle}">
         </TextBlock>
 
@@ -35,33 +35,36 @@
                     VerticalAlignment="Center"
                     Grid.Row="2"
                     Grid.RowSpan="5">
-            <TextBox x:Name="DoctorFullNameTB"
+            <TextBox x:Name="PatientFullNameTB"
                      PlaceholderText="Full Name"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="DoctorEmailTB"
+            <DatePicker x:Name="BirthdayDP"
+                        Height="45"
+                        Width="300"
+                        FontSize="24"
+                        Margin="10"
+                        Background="LightSkyBlue"></DatePicker>
+            <TextBox x:Name="PatientEmailTB"
                      PlaceholderText="Email Address"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="DoctorPhoneTB"
+            <TextBox x:Name="PatientPhoneTB"
                      PlaceholderText="Contact Number"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="DoctorAddressTB"
+            <TextBox x:Name="PatientAddressTB"
                      PlaceholderText="Address"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="BranchTB"
-                     PlaceholderText="Branch"
-                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="AuthorizationCodeTB"
-                     PlaceholderText="Authorization Code"
+            <TextBox x:Name="HealthCardNumberTB"
+                     PlaceholderText="Health Card Number"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
         </StackPanel>
 
-        <Button x:Name="DoctorCreateBtn" 
+        <Button x:Name="PatientCreateBtn" 
                 Grid.Row="7"
                 Style="{StaticResource CreateAccountButtonStyle}"
                 Background="Orange" Click="OnCreateAccount">Create Account
         </Button>
 
-        <Button x:Name="DoctorBackBtn"
+        <Button x:Name="PatientBackBtn"
                 Grid.Row="8"
                 Style="{StaticResource CreateAccountButtonStyle}"
                 Background="DarkGray" Click="OnBack">Back</Button>

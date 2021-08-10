@@ -21,5 +21,28 @@
             <Setter Property="FontWeight" Value="Bold"></Setter>
             <Setter Property="Foreground" Value="{StaticResource TitleForeGround}"></Setter>
         </Style>
+
+        <Style x:Key="CreateAccountTitle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="36"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="CreateAccountTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="45"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="Background" Value="LightSkyBlue"></Setter>
+        </Style>
+
+        <Style x:Key="CreateAccountButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Height" Value="45"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
