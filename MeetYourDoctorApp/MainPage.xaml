@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <Style x:Name="TextBoxStyle" TargetType="TextBox">
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
@@ -17,7 +17,7 @@
             <Setter Property="Width" Value="300"></Setter>
             <Setter Property="Height" Value="45"></Setter>
         </Style>
-        <Style x:Name="LoginButtonStyle" TargetType="Button">
+        <Style x:Key="LoginButtonStyle" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
@@ -27,7 +27,7 @@
             <Setter Property="CornerRadius" Value="10"></Setter>
             <Setter Property="Background" Value="LightSkyBlue"></Setter>
         </Style>
-        <Style x:Name="RegisterButtonStyle" TargetType="Button">
+        <Style x:Key="RegisterButtonStyle" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
@@ -41,7 +41,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -52,16 +52,10 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock FontSize="48"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="5"
-                   FontWeight="Bold"
+        <TextBlock Style="{StaticResource TitleStyle}"
                    >MEET YOUR DOCTOR
         </TextBlock>
 
-        <Frame x:Name="NavigationFrame" Grid.Row="1" Grid.RowSpan="7"></Frame>
-        
         <Image Grid.Row="1"
                HorizontalAlignment="Center"
                VerticalAlignment="Stretch"
@@ -96,12 +90,12 @@
         <Button x:Name="LoginBtn"
                 Grid.Row="5"
                 Style="{StaticResource LoginButtonStyle}"
-                IsEnabled="False">Login
+                IsEnabled="False" Click="LoginBtn_Click">Login
         </Button>
 
         <Button x:Name="CreateDoctorBtn"
                 Grid.Row="6"
-                Style="{StaticResource RegisterButtonStyle}"
+                Style="{StaticResource RegisterButtonStyle}" Click="OnCreateDoctorAcc"
                 >Create Doctor Account
         </Button>
 

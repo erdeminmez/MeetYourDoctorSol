@@ -5,6 +5,21 @@
     xmlns:local="using:MeetYourDoctorApp">
 
     <Application.Resources>
-        
+        <LinearGradientBrush x:Key="TitleForeGround" EndPoint="0.5, 1" StartPoint="0.5,0">
+            <GradientStop Color="Red" Offset="0.0"></GradientStop>
+            <GradientStop Color="Orange" Offset="0.2"></GradientStop>
+            <GradientStop Color="Yellow" Offset="0.4"></GradientStop>
+            <GradientStop Color="Green" Offset="0.6"></GradientStop>
+            <GradientStop Color="Blue" Offset="0.8"></GradientStop>
+            <GradientStop Color="Purple" Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+
+        <Style x:Key="TitleStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="48"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Foreground" Value="{StaticResource TitleForeGround}"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

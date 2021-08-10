@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="MeetYourDoctorApp.CreateDoctorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MeetYourDoctorApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="45"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="Background" Value="LightSkyBlue"></Setter>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Height" Value="45"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+        </Style>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource TitleStyle}"
+                   >MEET YOUR DOCTOR
+        </TextBlock>
+        
+        <TextBlock Grid.Row="1" Text="CREATE DOCTOR ACCOUNT"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="36"
+                   FontWeight="Bold">
+        </TextBlock>
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.Row="2"
+                    Grid.RowSpan="5">
+            <TextBox x:Name="FullNameTB"
+                     PlaceholderText="Full Name"
+                     Style="{StaticResource TextBoxStyle}"></TextBox>
+            <TextBox x:Name="EmailTB"
+                     PlaceholderText="Email Address"
+                     Style="{StaticResource TextBoxStyle}"></TextBox>
+            <TextBox x:Name="PhoneTB"
+                     PlaceholderText="Contact Number"
+                     Style="{StaticResource TextBoxStyle}"></TextBox>
+            <TextBox x:Name="AddressTB"
+                     PlaceholderText="Address"
+                     Style="{StaticResource TextBoxStyle}"></TextBox>
+            <TextBox x:Name="BranchTB"
+                     PlaceholderText="Branch"
+                     Style="{StaticResource TextBoxStyle}"></TextBox>
+            <TextBox x:Name="AuthorizationCodeTB"
+                     PlaceholderText="Authorization Code"
+                     Style="{StaticResource TextBoxStyle}"></TextBox>
+        </StackPanel>
+
+        <Button x:Name="CreateBtn" 
+                Grid.Row="7"
+                Style="{StaticResource ButtonStyle}"
+                Background="Orange" Click="OnCreateAccount">Create Account
+        </Button>
+
+        <Button x:Name="BackBtn"
+                Grid.Row="8"
+                Style="{StaticResource ButtonStyle}"
+                Background="DarkGray" Click="OnBack">Back</Button>
+    </Grid>
+</Page>
