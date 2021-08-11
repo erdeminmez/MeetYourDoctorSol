@@ -10,7 +10,6 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -18,7 +17,8 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource TitleStyle}"
@@ -30,29 +30,40 @@
                    Style="{StaticResource CreateAccountTitle}">
         </TextBlock>
 
-        <StackPanel Orientation="Vertical"
+        <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Grid.Row="2"
                     Grid.RowSpan="5">
-            <TextBox x:Name="DoctorFullNameTB"
+            <StackPanel>
+                <TextBox x:Name="DoctorUsernameTB"
+                     PlaceholderText="Username"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="DoctorPasswordTB"
+                     PlaceholderText="Password"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="DoctorFullNameTB"
                      PlaceholderText="Full Name"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="DoctorEmailTB"
+                <TextBox x:Name="DoctorEmailTB"
                      PlaceholderText="Email Address"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="DoctorPhoneTB"
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="DoctorPhoneTB"
                      PlaceholderText="Contact Number"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="DoctorAddressTB"
+                <TextBox x:Name="DoctorAddressTB"
                      PlaceholderText="Address"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="BranchTB"
+                <TextBox x:Name="BranchTB"
                      PlaceholderText="Branch"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="AuthorizationCodeTB"
+                <TextBox x:Name="AuthorizationCodeTB"
                      PlaceholderText="Authorization Code"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+            </StackPanel>
+            
         </StackPanel>
 
         <Button x:Name="DoctorCreateBtn" 

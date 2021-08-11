@@ -10,7 +10,6 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -18,7 +17,8 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource TitleStyle}"
@@ -30,32 +30,43 @@
                    Style="{StaticResource CreateAccountTitle}">
         </TextBlock>
 
-        <StackPanel Orientation="Vertical"
+        <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Grid.Row="2"
                     Grid.RowSpan="5">
-            <TextBox x:Name="PatientFullNameTB"
+            <StackPanel>
+                <TextBox x:Name="PatientUsernameTB"
+                     PlaceholderText="Username"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="PatientPasswordTB"
+                     PlaceholderText="Password"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="PatientFullNameTB"
                      PlaceholderText="Full Name"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <DatePicker x:Name="BirthdayDP"
+                <DatePicker x:Name="BirthdayDP"
                         Height="45"
                         Width="300"
                         FontSize="24"
                         Margin="10"
                         Background="LightSkyBlue"></DatePicker>
-            <TextBox x:Name="PatientEmailTB"
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="PatientEmailTB"
                      PlaceholderText="Email Address"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="PatientPhoneTB"
+                <TextBox x:Name="PatientPhoneTB"
                      PlaceholderText="Contact Number"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="PatientAddressTB"
+                <TextBox x:Name="PatientAddressTB"
                      PlaceholderText="Address"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-            <TextBox x:Name="HealthCardNumberTB"
+                <TextBox x:Name="HealthCardNumberTB"
                      PlaceholderText="Health Card Number"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+            </StackPanel>
+            
         </StackPanel>
 
         <Button x:Name="PatientCreateBtn" 
