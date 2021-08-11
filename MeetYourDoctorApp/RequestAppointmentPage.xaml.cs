@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -20,30 +21,21 @@ namespace MeetYourDoctorApp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DoctorMainPage : Page
+    public sealed partial class RequestAppointmentPage : Page
     {
-        public DoctorMainPage()
+        public RequestAppointmentPage()
         {
             this.InitializeComponent();
         }
 
-        private void OnNavigationRequested(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private async void OnCreateAppointment(object sender, RoutedEventArgs e)
         {
-            if (sender.SelectedItem == MySchedule)
-            {
-                DoctorNavigationFrame.Navigate(typeof(MySchedulePage));
-            }
-            else if (sender.SelectedItem == AppointmentRequests)
-            {
-                DoctorNavigationFrame.Navigate(typeof(AppointmentRequestsPage));
-            }
-            else if (sender.SelectedItem == DoctorLogout)
-            {
-                if (Frame.CanGoBack)
-                {
-                    Frame.GoBack();
-                }
-            }
+            MessageDialog messageDialog = new MessageDialog("Do you confirm to create this appointment?");
+            messageDialog.Commands.Add(new UICommand("Yes") { Id = 0 });
+            messageDialog.Commands.Add(new UICommand("No") { Id = 1 });
+            messageDialog.DefaultCommandIndex = 0;
+            messageDialog.CancelCommandIndex = 1;
+            await messageDialog.ShowAsync();
         }
     }
 }

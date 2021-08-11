@@ -1,0 +1,94 @@
+﻿<Page
+    x:Class="MeetYourDoctorApp.RequestAppointmentPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MeetYourDoctorApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="RequestTBStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+
+        </Style>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        
+
+        <ComboBox x:Name="BranchCB"
+                  Grid.Row="0"                 
+                  PlaceholderText="Branch"
+                  FontSize="24"
+                  Width="300"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="10">
+            <ComboBoxItem>Cardiologist</ComboBoxItem>
+            <ComboBoxItem>Dermatologist</ComboBoxItem>
+            <ComboBoxItem>Dietitian</ComboBoxItem>
+            <ComboBoxItem>Endocrinologist</ComboBoxItem>
+            <ComboBoxItem>Epidemiologist</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox x:Name="DoctorCB"
+                  Grid.Row="1"                  
+                  PlaceholderText="Doctor"
+                  FontSize="24"
+                  Width="300"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="10">
+            <ComboBoxItem>Sarah Smith</ComboBoxItem>
+            <ComboBoxItem>Emily Brown</ComboBoxItem>
+            <ComboBoxItem>Simon Tremblay</ComboBoxItem>
+            <ComboBoxItem>William Martin</ComboBoxItem>
+            <ComboBoxItem>Samuel Roy</ComboBoxItem>
+        </ComboBox>
+
+        <DatePicker Grid.Row="2"                    
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="300">
+        </DatePicker>
+
+        <ComboBox x:Name="TimeCB"
+                  Grid.Row="3"                 
+                  PlaceholderText="Time"
+                  FontSize="24"
+                  Width="300"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="10">
+            <ComboBoxItem>8:30 AM</ComboBoxItem>
+            <ComboBoxItem>10:00 AM</ComboBoxItem>
+            <ComboBoxItem>11:30 AM</ComboBoxItem>
+            <ComboBoxItem>2:30 PM</ComboBoxItem>
+            <ComboBoxItem>3:00 PM</ComboBoxItem>
+        </ComboBox>
+
+        <Button x:Name="CreateAppointmateBtn" 
+                Grid.Row="4"
+                HorizontalAlignment="Center"
+                Content="Create Appointment"
+                FontSize="24"
+                Width="300" Click="OnCreateAppointment"></Button>
+
+
+    </Grid>
+</Page>

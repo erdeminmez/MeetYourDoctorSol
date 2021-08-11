@@ -51,5 +51,12 @@
             <Setter Property="FontSize" Value="18"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
+
+        <Style x:Key="MyScheduleTBStyle2" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

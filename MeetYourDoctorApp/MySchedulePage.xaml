@@ -22,7 +22,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
@@ -30,9 +30,9 @@
             <TextBlock Text="Choose The Date:"
                        Margin="0,0,10,0">
             </TextBlock>
-            
+
             <DatePicker></DatePicker>
-            
+
         </StackPanel>
 
         <TextBlock Grid.Row="1"

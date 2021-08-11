@@ -34,7 +34,14 @@ namespace MeetYourDoctorApp
 
         private void OnLogin(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(DoctorMainPage));
+            if ((UserTypeCB.SelectedItem as ComboBoxItem).Content.ToString() == "Doctor")
+            {
+                Frame.Navigate(typeof(DoctorMainPage));
+            }
+            else if ((UserTypeCB.SelectedItem as ComboBoxItem).Content.ToString() == "Patient")
+            {
+                Frame.Navigate(typeof(PatientMainPage));
+            }
         }
 
         private void OnCreateDoctorAcc(object sender, RoutedEventArgs e)

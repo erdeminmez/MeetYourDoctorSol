@@ -104,8 +104,8 @@
                 Style="{StaticResource RegisterButtonStyle}" Click="OnCreatePatientAcc"
                 >Create Patient Account
         </Button>
-        
-        
+
+        <TextBlock x:Name="Test" Grid.Row="8"></TextBlock>
 
     </Grid>
 </Page>

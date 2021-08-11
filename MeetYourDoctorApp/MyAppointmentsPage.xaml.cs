@@ -20,30 +20,11 @@ namespace MeetYourDoctorApp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DoctorMainPage : Page
+    public sealed partial class MyAppointmentsPage : Page
     {
-        public DoctorMainPage()
+        public MyAppointmentsPage()
         {
             this.InitializeComponent();
-        }
-
-        private void OnNavigationRequested(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            if (sender.SelectedItem == MySchedule)
-            {
-                DoctorNavigationFrame.Navigate(typeof(MySchedulePage));
-            }
-            else if (sender.SelectedItem == AppointmentRequests)
-            {
-                DoctorNavigationFrame.Navigate(typeof(AppointmentRequestsPage));
-            }
-            else if (sender.SelectedItem == DoctorLogout)
-            {
-                if (Frame.CanGoBack)
-                {
-                    Frame.GoBack();
-                }
-            }
         }
     }
 }
