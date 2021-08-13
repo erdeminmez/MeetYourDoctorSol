@@ -177,6 +177,17 @@ namespace MeetYourDoctorLibrary
                 }
                 _birthday = value;
             }
-        }        
+        }
+
+        public override bool Equals(object obj)
+        {
+            Patient patient = obj as Patient;
+            if (patient != null)
+            {
+                if (patient.Username == Username)
+                    return true;
+            }
+            return false;
+        }
     }
 }

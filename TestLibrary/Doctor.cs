@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace MeetYourDoctorLibrary
 {
@@ -19,6 +20,7 @@ namespace MeetYourDoctorLibrary
         Immunologist
     }
 
+    [DataContract]
     public class Doctor
     {
         private string _username;
@@ -42,6 +44,7 @@ namespace MeetYourDoctorLibrary
             Branch = branch;
         }
 
+        [DataMember (Name = "DoctorUsername")]
         public string Username
         {
             get => _username;
@@ -62,6 +65,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember (Name = "DoctorPassword")]
         public string Password
         {
             get => _password;
@@ -82,6 +86,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember (Name = "DoctorFullName")]
         public string FullName
         {
             get => _fullName;
@@ -98,6 +103,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember (Name = "DoctorEmail")]
         public string Email
         {
             get => _email;
@@ -114,6 +120,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "DoctorPhone")]
         public string Phone
         {
             get => _phone;
@@ -137,6 +144,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "DoctorPostalCode")]
         public string PostalCode
         {
             get => _postalCode;
@@ -157,6 +165,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "DoctorSIN")]
         public string Sin
         {
             get => _sin;
@@ -179,7 +188,8 @@ namespace MeetYourDoctorLibrary
                 }
             }
         }
-        
+
+        [DataMember(Name = "DoctorBranch")]
         public Branch Branch
         {
             get => _branch;
@@ -187,6 +197,22 @@ namespace MeetYourDoctorLibrary
             {
                 _branch = value;
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            Doctor doctor = obj as Doctor;
+            if (doctor != null)
+            {
+                if (doctor.Username == Username)
+                    return true;
+            }
+            return false;
+        }
+
+        public static List<Branch> Branches()
+        {
+            return Enum.GetValues(typeof(Branch)).Cast<Branch>().ToList();
         }
     }
 }

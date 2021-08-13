@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MeetYourDoctorLibrary;
+using MeetYourDoctorData;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,6 +25,12 @@ namespace MeetYourDoctorApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private static AppointmentManager _appointmentManager = new AppointmentManager();
+        private static IDoctorDataManager _doctorDataManager = new DoctorJsonDataManager(ApplicationData.Current.LocalFolder.Path + @"\doctors.json");
+        
+        public static AppointmentManager AppointmentManager => _appointmentManager;
+        public static IDoctorDataManager DoctorDataManager => _doctorDataManager;
+        
         public MainPage()
         {
             this.InitializeComponent();

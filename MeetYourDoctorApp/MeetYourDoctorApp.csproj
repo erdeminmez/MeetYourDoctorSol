@@ -212,6 +212,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MeetYourDoctorData\MeetYourDoctorData.csproj">
+      <Project>{5b85e80a-c8aa-4150-83e2-303d5933553d}</Project>
+      <Name>MeetYourDoctorData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestLibrary\MeetYourDoctorLibrary.csproj">
       <Project>{78d6c025-5c4c-4ac5-9fbc-be94cf10e7e9}</Project>
       <Name>MeetYourDoctorLibrary</Name>

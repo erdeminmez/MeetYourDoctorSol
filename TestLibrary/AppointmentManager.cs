@@ -1,133 +1,48 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace MeetYourDoctorLibrary
 {
     public class AppointmentManager
     {
-        private List<Doctor> _doctorList;
-        private List<Patient> _patientList;
-        private List<Appointment> _appointmentList;
+        private List<Doctor> _doctors = new List<Doctor>();
+        private List<Patient> _patients = new List<Patient>();
+        private List<Appointment> _appointments = new List<Appointment>();
 
-        public AppointmentManager()
+        public ReadOnlyCollection<Doctor> Doctors => _doctors.AsReadOnly();
+        public ReadOnlyCollection<Patient> Patients => _patients.AsReadOnly();
+        public ReadOnlyCollection<Appointment> Appointments => _appointments.AsReadOnly();
+
+        public void EnrollDoctor(Doctor newDoctor)
         {
-            _doctorList = new List<Doctor>();
-            _patientList = new List<Patient>();
-            _appointmentList = new List<Appointment>();
+            if (Doctors.Contains(newDoctor))
+                throw new Exception("This username is already taken!");
+            else
+                _doctors.Add(newDoctor);
         }
 
-        public void AddDoctor(Doctor doctor)
+        public void SaveDoctorData(IDoctorDataManager doctorDataManager)
         {
-            _doctorList.Add(doctor);
+            doctorDataManager.SaveDoctorData(_doctors);
         }
 
-        public void AddPatient(Patient patient)
+        public void ReadDoctorData(IDoctorDataManager doctorDataManager)
         {
-            _patientList.Add(patient);
+            List<Doctor> doctors = doctorDataManager.ReadDoctorData();
+
+            if (doctors != null)
+                _doctors = doctors;
         }
 
-        public void AddAppointment(Appointment appointment)
+        public void EnrollPatient(Patient newPatient)
         {
-            _appointmentList.Add(appointment);
-        }
-
-        public void DeleteAppointment(int AppointmentId)
-        {
-            _appointmentList[AppointmentId - 1].AppointmentStatus = Status.Rejected;
-        }
-
-        private List<string> DoctorUsernames
-        {
-            get
-            {
-                List<string> doctorUsernames = new List<string>();
-                foreach (Doctor doctor in _doctorList)
-                {
-                    doctorUsernames.Add(doctor.Username);
-                }
-                return doctorUsernames;
-            }
-        }
-
-        private List<string> PatientUsernames
-        {
-            get
-            {
-                List<string> patientUsernames = new List<string>();
-                foreach (Doctor doctor in _doctorList)
-                {
-                    patientUsernames.Add(doctor.Username);
-                }
-                return patientUsernames;
-            }
-        }
-
-        public Dictionary<DateTime, Appointment> GetAcceptedAppointmentsForDoctor(string doctorUsername)
-        {
-            Dictionary<DateTime, Appointment> appointmentByDate = new Dictionary<DateTime, Appointment>();
-            foreach (string username in DoctorUsernames)
-            {
-                if(username == doctorUsername)
-                {
-                    foreach (Appointment appointment in _appointmentList)
-                    {
-                        if(appointment.DoctorUsername == doctorUsername)
-                        {
-                            if (appointment.AppointmentStatus == Status.Accepted)
-                            {
-                                appointmentByDate.Add(appointment.Date, appointment);
-                            }
-                        }
-                    }
-                    return appointmentByDate;
-                }
-            }
-            throw new Exception("Invalid username");
-        }
-
-        public Dictionary<int, Appointment> GetPendingAppointmentsForDoctor(string doctorUsername)
-        {
-            Dictionary<int, Appointment> appointmentById = new Dictionary<int, Appointment>();
-            foreach (string username in DoctorUsernames)
-            {
-                if (username == doctorUsername)
-                {
-                    foreach (Appointment appointment in _appointmentList)
-                    {
-                        if (appointment.DoctorUsername == doctorUsername)
-                        {
-                            if (appointment.AppointmentStatus == Status.Pending)
-                            {
-                                appointmentById.Add(appointment.Id, appointment);
-                            }
-                        }
-                    }
-                    return appointmentById;
-                }
-            }
-            throw new Exception("Invalid username");
-        }
-
-        public Dictionary<DateTime, Appointment> GetAppointmentsForPatient(string patientUsername)
-        {
-            Dictionary<DateTime, Appointment> appointmentByDate = new Dictionary<DateTime, Appointment>();
-            foreach (string username in PatientUsernames)
-            {
-                if (username == patientUsername)
-                {
-                    foreach (Appointment appointment in _appointmentList)
-                    {
-                        if (appointment.PatientUsername == patientUsername)
-                        {
-                            appointmentByDate.Add(appointment.Date, appointment);                           
-                        }
-                    }
-                    return appointmentByDate;
-                }
-            }
-            throw new Exception("Invalid username");
+            if (Patients.Contains(newPatient))
+                throw new Exception("This username is already taken!");
+            else
+                _patients.Add(newPatient);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeetYourDoctorLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,16 +23,37 @@ namespace MeetYourDoctorApp
     /// </summary>
     public sealed partial class CreateDoctorPage : Page
     {
+        public List<Branch> Branches = Doctor.Branches();
+
         public CreateDoctorPage()
         {
             this.InitializeComponent();
         }
 
+        private Doctor CaptureDoctorRecord()
+        {
+            string username = DoctorUsernameTB.Text;
+            string password = DoctorPasswordTB.Text;
+            string fullname = DoctorFullNameTB.Text;
+            string email = DoctorEmailTB.Text;
+            string phone = DoctorPhoneTB.Text;
+            string postalcode = DoctorPostalCodeTB.Text;
+            string sin = SinTB.Text;
+            Branch branch = (Branch)Enum.Parse(typeof(Branch), BranchCB.SelectedItem.ToString());
+            return new Doctor(username, password, fullname, email, phone, postalcode, sin, branch);
+        }
+
         private void OnCreateAccount(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
+            try
             {
-                Frame.GoBack();
+                Doctor doctor = CaptureDoctorRecord();
+                MainPage.AppointmentManager.EnrollDoctor(doctor);
+                MainPage.AppointmentManager.SaveDoctorData(MainPage.DoctorDataManager);
+            }
+            catch (Exception ex)
+            {
+                TxtErrorMessage.Text = ex.Message;
             }
         }
 

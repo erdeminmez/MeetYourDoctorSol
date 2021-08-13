@@ -59,13 +59,22 @@
                 <TextBox x:Name="SinTB"
                      PlaceholderText="SIN"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-                <TextBox x:Name="BranchTB"
-                     PlaceholderText="Branch"
-                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <ComboBox x:Name="BranchCB" 
+                          PlaceholderText="Branch" 
+                          Width="300"
+                          Height="45"
+                          FontSize="24"
+                          Margin="10"
+                          Background="LightSkyBlue"
+                          ItemsSource="{x:Bind Branches}">
+                    
+                </ComboBox>
             </StackPanel>
             
         </StackPanel>
 
+        <TextBlock x:Name="TxtErrorMessage" Grid.Row="6"></TextBlock>
+        
         <Button x:Name="DoctorCreateBtn" 
                 Grid.Row="7"
                 Style="{StaticResource CreateAccountButtonStyle}"
