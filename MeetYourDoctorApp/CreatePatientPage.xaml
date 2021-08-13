@@ -45,26 +45,27 @@
                 <TextBox x:Name="PatientFullNameTB"
                      PlaceholderText="Full Name"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="PatientEmailTB"
+                     PlaceholderText="Email Address"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="PatientPhoneTB"
+                     PlaceholderText="Contact Number"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="PatientPostalCodeTB"
+                     PlaceholderText="Postal Code"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="HealthCardNumberTB"
+                     PlaceholderText="Health Card Number"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
                 <DatePicker x:Name="BirthdayDP"
                         Height="45"
                         Width="300"
                         FontSize="24"
                         Margin="10"
                         Background="LightSkyBlue"></DatePicker>
-            </StackPanel>
-            <StackPanel>
-                <TextBox x:Name="PatientEmailTB"
-                     PlaceholderText="Email Address"
-                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-                <TextBox x:Name="PatientPhoneTB"
-                     PlaceholderText="Contact Number"
-                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-                <TextBox x:Name="PatientAddressTB"
-                     PlaceholderText="Address"
-                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-                <TextBox x:Name="HealthCardNumberTB"
-                     PlaceholderText="Health Card Number"
-                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
             </StackPanel>
             
         </StackPanel>
