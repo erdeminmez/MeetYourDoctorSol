@@ -70,6 +70,8 @@
             
         </StackPanel>
 
+        <TextBlock x:Name="TxtErrorMessage" Grid.Row="6"></TextBlock>
+
         <Button x:Name="PatientCreateBtn" 
                 Grid.Row="7"
                 Style="{StaticResource CreateAccountButtonStyle}"

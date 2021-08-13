@@ -27,10 +27,12 @@ namespace MeetYourDoctorApp
     {
         private static AppointmentManager _appointmentManager = new AppointmentManager();
         private static IDoctorDataManager _doctorDataManager = new DoctorJsonDataManager(ApplicationData.Current.LocalFolder.Path + @"\doctors.json");
-        
+        private static IPatientDataManager _patientDataManager = new PatientJsonDataManager(ApplicationData.Current.LocalFolder.Path + @"\patients.json");
+
         public static AppointmentManager AppointmentManager => _appointmentManager;
         public static IDoctorDataManager DoctorDataManager => _doctorDataManager;
-        
+        public static IPatientDataManager PatientDataManager => _patientDataManager;
+
         public MainPage()
         {
             this.InitializeComponent();

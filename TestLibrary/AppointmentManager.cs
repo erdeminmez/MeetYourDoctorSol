@@ -44,5 +44,18 @@ namespace MeetYourDoctorLibrary
             else
                 _patients.Add(newPatient);
         }
+
+        public void SavePatientData(IPatientDataManager patientDataManager)
+        {
+            patientDataManager.SavePatientData(_patients);
+        }
+
+        public void ReadPatientData(IPatientDataManager patientDataManager)
+        {
+            List<Patient> patients = patientDataManager.ReadPatientData();
+
+            if (patients != null)
+                _patients = patients;
+        }
     }
 }

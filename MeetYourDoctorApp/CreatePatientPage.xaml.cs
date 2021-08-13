@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeetYourDoctorLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,11 +27,31 @@ namespace MeetYourDoctorApp
         {
             this.InitializeComponent();
         }
+
+        private Patient CapturePatientRecord()
+        {
+            string username = PatientUsernameTB.Text;
+            string password = PatientPasswordTB.Text;
+            string fullname = PatientFullNameTB.Text;
+            string email = PatientEmailTB.Text;
+            string phone = PatientPhoneTB.Text;
+            string postalcode = PatientPostalCodeTB.Text;
+            string healthCardNumber = HealthCardNumberTB.Text;
+            DateTime birthday = BirthdayDP.Date.Date;
+            return new Patient(username, password, fullname, email, phone, postalcode, healthCardNumber, birthday);
+        }
+
         private void OnCreateAccount(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
+            try
             {
-                Frame.GoBack();
+                Patient patient = CapturePatientRecord();
+                MainPage.AppointmentManager.EnrollPatient(patient);
+                MainPage.AppointmentManager.SavePatientData(MainPage.PatientDataManager);
+            }
+            catch (Exception ex)
+            {
+                TxtErrorMessage.Text = ex.Message;
             }
         }
 

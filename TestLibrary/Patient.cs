@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace MeetYourDoctorLibrary
 {
+    [DataContract]
     public class Patient
     {
         private string _username;
@@ -28,6 +30,7 @@ namespace MeetYourDoctorLibrary
             Birthday = birthday;
         }
 
+        [DataMember(Name = "PatientUsername")]
         public string Username
         {
             get => _username;
@@ -48,6 +51,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "PatientPassword")]
         public string Password
         {
             get => _password;
@@ -68,6 +72,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "PatientFullName")]
         public string FullName
         {
             get => _fullName;
@@ -84,6 +89,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "PatientEmail")]
         public string Email
         {
             get => _email;
@@ -100,6 +106,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "PatientPhone")]
         public string Phone
         {
             get => _phone;
@@ -123,6 +130,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "PatientPostalCode")]
         public string PostalCode
         {
             get => _postalCode;
@@ -143,6 +151,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "PatientHealthCardNumber")]
         public string HealthCardNumber
         {
             get => _healthCardNumber;
@@ -166,6 +175,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "PatientBirthday")]
         public DateTime Birthday
         {
             get => _birthday;
