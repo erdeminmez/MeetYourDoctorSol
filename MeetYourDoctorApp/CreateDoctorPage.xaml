@@ -53,14 +53,14 @@
                 <TextBox x:Name="DoctorPhoneTB"
                      PlaceholderText="Contact Number"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-                <TextBox x:Name="DoctorAddressTB"
-                     PlaceholderText="Address"
+                <TextBox x:Name="DoctorPostalCodeTB"
+                     PlaceholderText="Postal Code"
+                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
+                <TextBox x:Name="SinTB"
+                     PlaceholderText="SIN"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
                 <TextBox x:Name="BranchTB"
                      PlaceholderText="Branch"
-                     Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
-                <TextBox x:Name="AuthorizationCodeTB"
-                     PlaceholderText="Authorization Code"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
             </StackPanel>
             
