@@ -92,7 +92,7 @@ namespace MeetYourDoctorApp
             }
             catch (Exception ex)
             {
-                Test.Text = ex.Message;
+                Test.Text = "The application can be slow at the beginning because it needs to create some files for storage in your pc!";
             }
         }
     }
