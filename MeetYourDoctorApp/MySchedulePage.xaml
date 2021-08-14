@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MeetYourDoctorApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local1="using:MeetYourDoctorLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -12,8 +12,9 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -31,108 +32,53 @@
                        Margin="0,0,10,0">
             </TextBlock>
 
-            <DatePicker></DatePicker>
+            <DatePicker x:Name="DateDP" SelectedDateChanged="OnDateChanged"></DatePicker>
 
         </StackPanel>
 
+        
+
         <TextBlock Grid.Row="1"
-                   Grid.Column="0"
+                   Grid.Column="1"
                    Text="Time"
                    Style="{StaticResource MyScheduleTBStyle}"></TextBlock>
 
         <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Text="PatientName"
-                   Style="{StaticResource MyScheduleTBStyle}"></TextBlock>
-
-        <TextBlock Grid.Row="1"
                    Grid.Column="2"
-                   Text="Patient Information"
+                   Text="Patient Name"
                    Style="{StaticResource MyScheduleTBStyle}"></TextBlock>
 
-        <TextBlock Grid.Row="1"
-                   Grid.Column="3"
-                   Text="Action"
-                   Style="{StaticResource MyScheduleTBStyle}"></TextBlock>
+        <ListView x:Name="LstSchedule" 
+                  ItemsSource="{x:Bind _schedule, Mode=OneWay}"
+                  Grid.Row="2"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2" 
+                  SelectionChanged="OnSelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
 
-        <ListView Grid.Row="2"
-                  Grid.Column="0">
-            <ListViewItem Content="8:00 AM"></ListViewItem>
-            <ListViewItem Content="8:30 AM"></ListViewItem>
-            <ListViewItem Content="9:00 AM"></ListViewItem>
-            <ListViewItem Content="9:30 AM"></ListViewItem>
-            <ListViewItem Content="10:00 AM"></ListViewItem>
-            <ListViewItem Content="10:30 AM"></ListViewItem>
-            <ListViewItem Content="11:00 AM"></ListViewItem>
-            <ListViewItem Content="11:30 AM"></ListViewItem>
-            <ListViewItem Content="12:00 PM"></ListViewItem>
-            <ListViewItem Content="1:30 PM"></ListViewItem>
-            <ListViewItem Content="2:O0 PM"></ListViewItem>
-            <ListViewItem Content="2:30 PM"></ListViewItem>
-            <ListViewItem Content="3:O0 PM"></ListViewItem>
-            <ListViewItem Content="3:30 PM"></ListViewItem>
-            <ListViewItem Content="4:O0 PM"></ListViewItem>
-            <ListViewItem Content="4:30 PM"></ListViewItem>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:DoctorScheduleItem">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind TimeSlot}" Grid.Column="0"></TextBlock>
+                        <TextBlock Text="{x:Bind PatientName}" Grid.Column="1"></TextBlock>
+                       
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
         </ListView>
 
-        <ListView Grid.Row="2"
-                  Grid.Column="1">
-            <ListViewItem Content="Sarah Smith"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Emily Brown"></ListViewItem>
-            <ListViewItem Content="Nathan Tremblay"></ListViewItem>
-            <ListViewItem Content="Emma Martin"></ListViewItem>
-            <ListViewItem Content="Simon Roy"></ListViewItem>
-            <ListViewItem Content="Jessica Gagnon"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Hannah Lee"></ListViewItem>
-            <ListViewItem Content="David Wilson"></ListViewItem>
-            <ListViewItem Content="Samantha Jhonson"></ListViewItem>
-            <ListViewItem Content="Nicolas MacDonald"></ListViewItem>
-            <ListViewItem Content="Catherine Taylor"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Rachel Campbell"></ListViewItem>
-            <ListViewItem Content="Gabriel Anderson"></ListViewItem>
-        </ListView>
-
-        <ListView Grid.Row="2"
-                  Grid.Column="2" DoubleTapped="OnPatientInfo">
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-            <ListViewItem Content="Double Click For Info"></ListViewItem>
-        </ListView>
-
-        <ListView Grid.Row="2"
-                  Grid.Column="3" DoubleTapped="OnDelete">
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content=""></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-            <ListViewItem Content="Delete"></ListViewItem>
-        </ListView>
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="GetInfoBtn" Content="Get Info" Margin="20" Width="150" CornerRadius="10" Click="OnInfo" IsEnabled="False"></Button>
+            <Button x:Name="CancelBtn" Content="Cancel" Margin="20" Width="150" CornerRadius="10" Click="OnCancel" IsEnabled="False"></Button>
+        </StackPanel>
     </Grid>
 </Page>

@@ -181,6 +181,23 @@ namespace MeetYourDoctorLibrary
             return pendingAppointmentsOfDoctor;
         }
 
+        public List<Appointment> AcceptedAppointmentsOfDoctor(string doctorUsername, DateTime date)
+        {
+            List<Appointment> acceptedAppointmentsOfDoctor = new List<Appointment>();
+            foreach (Appointment appointment in Appointments)
+            {
+                if (appointment.AppointmentStatus == Status.Accepted)
+                {
+                    if (appointment.DoctorUsername == doctorUsername)
+                    {
+                        if (appointment.Date == date)
+                            acceptedAppointmentsOfDoctor.Add(appointment);
+                    }
+                }
+            }
+            return acceptedAppointmentsOfDoctor;
+        }
+
         public void UpdateStatusOfAppointment(Appointment otherAppointment, Status status)
         {
             foreach (Appointment appointment in Appointments)
@@ -188,6 +205,28 @@ namespace MeetYourDoctorLibrary
                 if(appointment.Equals(otherAppointment))
                     appointment.AppointmentStatus = status;
             }
+        }
+
+        public string GetPatientInfo(string patientFullName)
+        {
+            foreach (Patient patient in Patients)
+            {
+                if (patient.FullName == patientFullName)
+                    return patient.ToString();
+            }
+            return "";
+        }
+
+        public Appointment GetAppointment(string doctorUsername, DateTime date, string timeSlot)
+        {
+            foreach (Appointment appointment in Appointments)
+            {
+                if (appointment.DoctorUsername == doctorUsername && appointment.Date == date && appointment.TimeSlot == timeSlot)
+                {
+                    return appointment;
+                }
+            }
+            throw new Exception("There is no such appointment!");
         }
     }
 }

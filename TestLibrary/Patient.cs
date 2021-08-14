@@ -205,5 +205,10 @@ namespace MeetYourDoctorLibrary
                 return true;
             return false;
         }
+
+        public override string ToString()
+        {
+            return $"Full Name: {FullName}\nBirthday: {Birthday.ToShortDateString()}\nContact Number: {Phone}\nEmail Address: {Email}\nPostal Code: {PostalCode}";
+        }
     }
 }
