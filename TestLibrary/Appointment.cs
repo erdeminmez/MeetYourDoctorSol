@@ -12,27 +12,24 @@ namespace MeetYourDoctorLibrary
     }
     public class Appointment
     {
-        private int _id;
         private Status _appointmentStatus;
         private DateTime _date;
         private Branch _appointmentBranch;
         private string _doctorUsername;
         private string _patientUsername;
+        private string _timeSlot;
 
-        public Appointment(int id, Status appointmentStatus, DateTime date, Branch appointmentBranch, string doctorUsername, string patientUsername)
+        public Appointment(Status appointmentStatus, DateTime date, Branch appointmentBranch, string doctorUsername, string patientUsername, string timeSlot)
         {
-            _id = id;
             AppointmentStatus = appointmentStatus;
             Date = date;
             AppointmentBranch = appointmentBranch;
             DoctorUsername = doctorUsername;
             PatientUsername = patientUsername;
+            TimeSlot = timeSlot;
         }            
 
-        public int Id
-        {
-            get => _id;
-        }
+        
 
         public Status AppointmentStatus
         {
@@ -84,6 +81,41 @@ namespace MeetYourDoctorLibrary
                 }
                 _patientUsername = value;
             }
+        }
+
+        public string TimeSlot
+        {
+            get => _timeSlot;
+            set
+            {
+                if (TimeSlots().Contains(value))
+                    _timeSlot = value;
+                else
+                    throw new Exception("Time slot is invalid!");
+            }
+        }
+
+        public static List<string> TimeSlots()
+        {
+            return new List<string>()
+            {
+                "8:00 AM",
+                "8:30 AM",
+                "9:00 AM",
+                "9:30 AM",
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM",
+                "1:00 PM",
+                "1:30 PM",
+                "2:00 PM",
+                "2:30 PM",
+                "3:00 PM",
+                "3:30 PM",
+                "4:00 PM",
+                "4:30 PM"
+            };
         }
     }
 }

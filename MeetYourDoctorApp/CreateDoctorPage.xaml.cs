@@ -24,7 +24,7 @@ namespace MeetYourDoctorApp
     /// </summary>
     public sealed partial class CreateDoctorPage : Page
     {
-        public List<Branch> Branches = Doctor.Branches();
+        private List<Branch> _branches = Doctor.Branches();
 
         public CreateDoctorPage()
         {

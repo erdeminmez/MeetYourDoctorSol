@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeetYourDoctorLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,11 @@ namespace MeetYourDoctorApp
     /// </summary>
     public sealed partial class RequestAppointmentPage : Page
     {
+        private List<Branch> _branches = Doctor.Branches();
+        private List<Doctor> _doctors = new List<Doctor>();
+        private Doctor _selectedDoctor;
+        private DateTime _selectedDate;
+        
         public RequestAppointmentPage()
         {
             this.InitializeComponent();
@@ -37,5 +43,32 @@ namespace MeetYourDoctorApp
             messageDialog.CancelCommandIndex = 1;
             await messageDialog.ShowAsync();
         }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _doctors = MainPage.AppointmentManager.ShowDoctorsOfBranch((Branch)Enum.Parse(typeof(Branch), BranchCB.SelectedItem.ToString()));
+            DoctorCB.ItemsSource = _doctors;
+            DoctorCB.DisplayMemberPath = "FullName";
+            DoctorCB.IsEnabled = true;
+            AppointmentDateDP.IsEnabled = false;
+            TimeCB.IsEnabled = false;
+        }
+
+        private void OnDoctorSelection(object sender, SelectionChangedEventArgs e)
+        {
+            _selectedDoctor = DoctorCB.SelectedItem as Doctor;
+            if (_selectedDoctor != null)
+                AppointmentDateDP.IsEnabled = true;
+            TimeCB.IsEnabled = false;
+        }
+
+        private void OnSelectionDateChanged(DatePicker sender, DatePickerSelectedValueChangedEventArgs args)
+        {
+            _selectedDate = AppointmentDateDP.Date.Date;
+            TimeCB.ItemsSource = MainPage.AppointmentManager.AvailableTimeSlots(_selectedDoctor.Username, _selectedDate);
+            TimeCB.IsEnabled = true;
+        }
+
+        
     }
 }

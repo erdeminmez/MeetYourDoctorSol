@@ -28,7 +28,7 @@
 
         </Grid.RowDefinitions>
 
-        
+
 
         <ComboBox x:Name="BranchCB"
                   Grid.Row="0"                 
@@ -37,12 +37,8 @@
                   Width="300"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Margin="10">
-            <ComboBoxItem>Cardiologist</ComboBoxItem>
-            <ComboBoxItem>Dermatologist</ComboBoxItem>
-            <ComboBoxItem>Dietitian</ComboBoxItem>
-            <ComboBoxItem>Endocrinologist</ComboBoxItem>
-            <ComboBoxItem>Epidemiologist</ComboBoxItem>
+                  Margin="10"
+                  ItemsSource="{x:Bind _branches}" SelectionChanged="OnSelectionChanged">
         </ComboBox>
 
         <ComboBox x:Name="DoctorCB"
@@ -52,19 +48,17 @@
                   Width="300"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Margin="10">
-            <ComboBoxItem>Sarah Smith</ComboBoxItem>
-            <ComboBoxItem>Emily Brown</ComboBoxItem>
-            <ComboBoxItem>Simon Tremblay</ComboBoxItem>
-            <ComboBoxItem>William Martin</ComboBoxItem>
-            <ComboBoxItem>Samuel Roy</ComboBoxItem>
+                  Margin="10"
+                  IsEnabled="False" SelectionChanged="OnDoctorSelection">
         </ComboBox>
 
-        <DatePicker Grid.Row="2"                    
+        <DatePicker x:Name="AppointmentDateDP" 
+                    Grid.Row="2"                    
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Width="300">
+                    Width="300" SelectedDateChanged="OnSelectionDateChanged"
+                    IsEnabled="False">
         </DatePicker>
 
         <ComboBox x:Name="TimeCB"
@@ -74,7 +68,8 @@
                   Width="300"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Margin="10">
+                  Margin="10"
+                  IsEnabled="False">
             <ComboBoxItem>8:30 AM</ComboBoxItem>
             <ComboBoxItem>10:00 AM</ComboBoxItem>
             <ComboBoxItem>11:30 AM</ComboBoxItem>
@@ -87,7 +82,8 @@
                 HorizontalAlignment="Center"
                 Content="Create Appointment"
                 FontSize="24"
-                Width="300" Click="OnCreateAppointment"></Button>
+                Width="300" Click="OnCreateAppointment"
+                IsEnabled="False"></Button>
 
 
     </Grid>

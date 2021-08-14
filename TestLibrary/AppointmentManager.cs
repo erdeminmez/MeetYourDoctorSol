@@ -77,5 +77,29 @@ namespace MeetYourDoctorLibrary
             }
             return false;
         }
+
+        public List<Doctor> ShowDoctorsOfBranch(Branch branch)
+        {
+            List<Doctor> doctorsOfBranch = new List<Doctor>();
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.Branch == branch)
+                    doctorsOfBranch.Add(doctor);
+            }
+            return doctorsOfBranch;
+        }
+
+        public List<string> AvailableTimeSlots(string doctorUsername, DateTime date)
+        {
+            List<string> availableTimeSlots = Appointment.TimeSlots();
+            foreach (Appointment appointment in Appointments)
+            {
+                if(appointment.DoctorUsername == doctorUsername && appointment.Date == date)
+                {
+                    availableTimeSlots.Remove(appointment.TimeSlot);
+                }
+            }
+            return availableTimeSlots;
+        }
     }
 }

@@ -24,8 +24,6 @@ namespace MeetYourDoctorApp
     /// </summary>
     public sealed partial class CreatePatientPage : Page
     {
-        public object Messagedialog { get; private set; }
-
         public CreatePatientPage()
         {
             this.InitializeComponent();
