@@ -56,10 +56,6 @@ namespace MeetYourDoctorApp
                 username = settingValues["Username"].ToString();
                 TxtPat.Text = username;
             }
-
-        }
-    }
-    
-
-    
+        }        
+    }    
 }

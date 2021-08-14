@@ -58,6 +58,27 @@ namespace MeetYourDoctorLibrary
                 _patients = patients;
         }
 
+        public void EnrollAppointment(Appointment newAppointment)
+        {
+            if (Appointments.Contains(newAppointment))
+                throw new Exception("This appointment is already created!");
+            else
+                _appointments.Add(newAppointment);
+        }
+
+        public void SaveAppointmentData(IAppointmentDataManager appointmentDataManager)
+        {
+            appointmentDataManager.SaveAppointmentData(_appointments);
+        }
+
+        public void ReadAppointmentData(IAppointmentDataManager appointmentDataManager)
+        {
+            List<Appointment> appointments = appointmentDataManager.ReadAppointmentData();
+
+            if (appointments != null)
+                _appointments = appointments;
+        }
+
         public bool isDoctorAccount(string username, string password)
         {
             foreach (Doctor doctor in Doctors)

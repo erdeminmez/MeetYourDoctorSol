@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace MeetYourDoctorLibrary
 {
@@ -10,6 +12,7 @@ namespace MeetYourDoctorLibrary
         Accepted,
         Rejected
     }
+    [DataContract]
     public class Appointment
     {
         private Status _appointmentStatus;
@@ -27,10 +30,9 @@ namespace MeetYourDoctorLibrary
             DoctorUsername = doctorUsername;
             PatientUsername = patientUsername;
             TimeSlot = timeSlot;
-        }            
+        }
 
-        
-
+        [DataMember(Name = "AppointmentStatus")]
         public Status AppointmentStatus
         {
             get => _appointmentStatus;
@@ -40,15 +42,20 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "AppointmentDate")]
         public DateTime Date
         {
             get => _date;
             set
             {
-                _date = value;
+                if (value > DateTime.Today)
+                    _date = value;
+                else
+                    throw new Exception("Appointment date must be later than today!");
             }
         }
 
+        [DataMember(Name = "AppointmentBranch")]
         public Branch AppointmentBranch
         {
             get => _appointmentBranch;
@@ -57,6 +64,8 @@ namespace MeetYourDoctorLibrary
                 _appointmentBranch = value;
             }
         }
+
+        [DataMember(Name = "AppointmentDoctorUsername")]
         public string DoctorUsername
         {
             get => _doctorUsername;
@@ -70,6 +79,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "AppointmentPatientUsername")]
         public string PatientUsername
         {
             get => _patientUsername;
@@ -83,6 +93,7 @@ namespace MeetYourDoctorLibrary
             }
         }
 
+        [DataMember(Name = "AppointmentTimeSlot")]
         public string TimeSlot
         {
             get => _timeSlot;

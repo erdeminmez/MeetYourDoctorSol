@@ -29,10 +29,12 @@ namespace MeetYourDoctorApp
         private static AppointmentManager _appointmentManager = new AppointmentManager();
         private static IDoctorDataManager _doctorDataManager = new DoctorJsonDataManager(ApplicationData.Current.LocalFolder.Path + @"\doctors.json");
         private static IPatientDataManager _patientDataManager = new PatientJsonDataManager(ApplicationData.Current.LocalFolder.Path + @"\patients.json");
+        private static IAppointmentDataManager _appointmentDataManager = new AppointmentJsonDataManager(ApplicationData.Current.LocalFolder.Path + @"\appointments.json");
 
         public static AppointmentManager AppointmentManager => _appointmentManager;
         public static IDoctorDataManager DoctorDataManager => _doctorDataManager;
         public static IPatientDataManager PatientDataManager => _patientDataManager;
+        public static IAppointmentDataManager AppointmentDataManager => _appointmentDataManager;
 
         public MainPage()
         {
@@ -80,17 +82,17 @@ namespace MeetYourDoctorApp
             Frame.Navigate(typeof(CreatePatientPage));
         }
 
-        private async void OnPageLoaded(object sender, RoutedEventArgs e)
+        private void OnPageLoaded(object sender, RoutedEventArgs e)
         {
             try
             {               
                 AppointmentManager.ReadDoctorData(_doctorDataManager);
                 AppointmentManager.ReadPatientData(_patientDataManager);
+                AppointmentManager.ReadAppointmentData(_appointmentDataManager);
             }
             catch (Exception ex)
             {
-                MessageDialog messageDialog = new MessageDialog($"{ex.Message}");
-                await messageDialog.ShowAsync();
+                Test.Text = ex.Message;
             }
         }
     }

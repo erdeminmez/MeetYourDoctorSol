@@ -60,7 +60,8 @@ namespace MeetYourDoctorApp
             }
             catch (Exception ex)
             {
-                TxtErrorMessage.Text = ex.Message;
+                MessageDialog messageDialog = new MessageDialog($"{ex.Message}");
+                await messageDialog.ShowAsync();
             }
         }
 

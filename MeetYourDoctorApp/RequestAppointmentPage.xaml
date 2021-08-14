@@ -69,7 +69,7 @@
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Margin="10"
-                  IsEnabled="False">
+                  IsEnabled="False" SelectionChanged="OnTimeSelected">
             <ComboBoxItem>8:30 AM</ComboBoxItem>
             <ComboBoxItem>10:00 AM</ComboBoxItem>
             <ComboBoxItem>11:30 AM</ComboBoxItem>
