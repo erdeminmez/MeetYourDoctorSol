@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -43,13 +44,21 @@ namespace MeetYourDoctorApp
             return new Doctor(username, password, fullname, email, phone, postalcode, sin, branch);
         }
 
-        private void OnCreateAccount(object sender, RoutedEventArgs e)
+        private async void OnCreateAccount(object sender, RoutedEventArgs e)
         {
             try
             {
                 Doctor doctor = CaptureDoctorRecord();
                 MainPage.AppointmentManager.EnrollDoctor(doctor);
                 MainPage.AppointmentManager.SaveDoctorData(MainPage.DoctorDataManager);
+
+                MessageDialog messageDialog = new MessageDialog("Your account was created successfully.");
+                await messageDialog.ShowAsync();
+
+                if (Frame.CanGoBack)
+                {
+                    Frame.GoBack();
+                }
             }
             catch (Exception ex)
             {

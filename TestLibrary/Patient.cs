@@ -181,11 +181,10 @@ namespace MeetYourDoctorLibrary
             get => _birthday;
             set
             {
-                if (value.Date.Date.Year - DateTime.Today.Date.Year < 19)
-                {
+                if (DateTime.Today.Date.Year - value.Date.Date.Year > 18)
+                    _birthday = value;
+                else
                     throw new Exception($"You must borned before the year {DateTime.Today.Date.Year - 18} to register this app!");
-                }
-                _birthday = value;
             }
         }
 
