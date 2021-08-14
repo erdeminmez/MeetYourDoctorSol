@@ -214,5 +214,12 @@ namespace MeetYourDoctorLibrary
         {
             return Enum.GetValues(typeof(Branch)).Cast<Branch>().ToList();
         }
+
+        public bool isDoctorAccount(string username, string password)
+        {
+            if (username == Username && password == Password)
+                return true;
+            return false;
+        }
     }
 }

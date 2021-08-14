@@ -65,7 +65,7 @@
                         Width="300"
                         FontSize="24"
                         Margin="10"
-                        Background="LightSkyBlue"></DatePicker>
+                        Background="LightSkyBlue" SelectedDateChanged="OnSelectedDateChanged"></DatePicker>
             </StackPanel>
             
         </StackPanel>
@@ -75,7 +75,8 @@
         <Button x:Name="PatientCreateBtn" 
                 Grid.Row="7"
                 Style="{StaticResource CreateAccountButtonStyle}"
-                Background="Orange" Click="OnCreateAccount">Create Account
+                Background="Orange" Click="OnCreateAccount"
+                IsEnabled="False">Create Account
         </Button>
 
         <Button x:Name="PatientBackBtn"

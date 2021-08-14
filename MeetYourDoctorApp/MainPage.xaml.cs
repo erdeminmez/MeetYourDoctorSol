@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using MeetYourDoctorLibrary;
 using MeetYourDoctorData;
 using Windows.Storage;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -43,16 +44,30 @@ namespace MeetYourDoctorApp
             LoginBtn.IsEnabled = true;
         }
 
-        private void OnLogin(object sender, RoutedEventArgs e)
+        private async void OnLogin(object sender, RoutedEventArgs e)
         {
             if ((UserTypeCB.SelectedItem as ComboBoxItem).Content.ToString() == "Doctor")
             {
-                Frame.Navigate(typeof(DoctorMainPage));
+                if (AppointmentManager.isDoctorAccount(UsernameTB.Text, PasswordTB.Text))
+                {
+                    ApplicationData.Current.LocalSettings.Values["Username"] = UsernameTB.Text;
+                    Frame.Navigate(typeof(DoctorMainPage));
+                }
+                    
             }
             else if ((UserTypeCB.SelectedItem as ComboBoxItem).Content.ToString() == "Patient")
             {
-                Frame.Navigate(typeof(PatientMainPage));
+                if (AppointmentManager.isPatientAccount(UsernameTB.Text, PasswordTB.Text))
+                {
+                    ApplicationData.Current.LocalSettings.Values["Username"] = UsernameTB.Text;
+                    Frame.Navigate(typeof(PatientMainPage));
+                }
             }
+            else
+            {
+                MessageDialog messageDialog = new MessageDialog("Invalid entries!");
+                await messageDialog.ShowAsync();
+            }           
         }
 
         private void OnCreateDoctorAcc(object sender, RoutedEventArgs e)
@@ -63,6 +78,20 @@ namespace MeetYourDoctorApp
         private void OnCreatePatientAcc(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CreatePatientPage));
+        }
+
+        private async void OnPageLoaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {               
+                AppointmentManager.ReadDoctorData(_doctorDataManager);
+                AppointmentManager.ReadPatientData(_patientDataManager);
+            }
+            catch (Exception ex)
+            {
+                MessageDialog messageDialog = new MessageDialog($"{ex.Message}");
+                await messageDialog.ShowAsync();
+            }
         }
     }
 }

@@ -198,5 +198,12 @@ namespace MeetYourDoctorLibrary
             }
             return false;
         }
+
+        public bool isPatientAccount(string username, string password)
+        {
+            if (username == Username && password == Password)
+                return true;
+            return false;
+        }
     }
 }

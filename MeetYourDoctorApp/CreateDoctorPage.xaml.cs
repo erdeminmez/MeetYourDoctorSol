@@ -73,5 +73,10 @@ namespace MeetYourDoctorApp
                 Frame.GoBack();
             }
         }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DoctorCreateBtn.IsEnabled = true;
+        }
     }
 }

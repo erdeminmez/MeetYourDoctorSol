@@ -57,5 +57,25 @@ namespace MeetYourDoctorLibrary
             if (patients != null)
                 _patients = patients;
         }
+
+        public bool isDoctorAccount(string username, string password)
+        {
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.isDoctorAccount(username, password))
+                    return true;
+            }
+            return false;
+        }
+
+        public bool isPatientAccount(string username, string password)
+        {
+            foreach (Patient patient in Patients)
+            {
+                if (patient.isPatientAccount(username, password))
+                    return true;
+            }
+            return false;
+        }
     }
 }

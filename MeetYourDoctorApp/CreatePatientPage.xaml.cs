@@ -73,5 +73,10 @@ namespace MeetYourDoctorApp
                 Frame.GoBack();
             }
         }
+
+        private void OnSelectedDateChanged(DatePicker sender, DatePickerSelectedValueChangedEventArgs args)
+        {
+            PatientCreateBtn.IsEnabled = true;
+        }
     }
 }
