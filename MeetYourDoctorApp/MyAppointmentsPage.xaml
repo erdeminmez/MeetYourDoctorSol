@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MeetYourDoctorApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local1="using:MeetYourDoctorLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -20,6 +20,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.12*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0"
@@ -47,43 +48,37 @@
                    Text="Status"
                    Style="{StaticResource MyScheduleTBStyle}"></TextBlock>
 
-        <ListView Grid.Row="1"
+        <ListView x:Name="LstAppointments" 
+                  ItemsSource="{x:Bind _appointments, Mode=OneWay}"
+                  Grid.Row="1"
                   Grid.Column="0"
-                  Grid.ColumnSpan="5">
+                  Grid.ColumnSpan="6">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             
-            <ListViewItem HorizontalContentAlignment="Stretch">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="2021-09-22" Grid.Column="0"></TextBlock>
-                    <TextBlock Text="9:30 AM" Grid.Column="1"></TextBlock>
-                    <TextBlock Text="Eye" Grid.Column="2"></TextBlock>
-                    <TextBlock Text="Sarah Cote" Grid.Column="3"></TextBlock>
-                    <TextBlock Text="Accepted" Grid.Column="4"></TextBlock>
-                </Grid>
-            </ListViewItem>
-
-            <ListViewItem HorizontalContentAlignment="Stretch">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="2021-09-18" Grid.Column="0"></TextBlock>
-                    <TextBlock Text="10:30 AM" Grid.Column="1"></TextBlock>
-                    <TextBlock Text="Heart" Grid.Column="2"></TextBlock>
-                    <TextBlock Text="John Taylor" Grid.Column="3"></TextBlock>
-                    <TextBlock Text="Pending" Grid.Column="4"></TextBlock>
-                </Grid>
-            </ListViewItem>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:Appointment">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind Date.ToShortDateString()}" Grid.Column="0"></TextBlock>
+                        <TextBlock Text="{x:Bind TimeSlot}" Grid.Column="1"></TextBlock>
+                        <TextBlock Text="{x:Bind AppointmentBranch}" Grid.Column="2"></TextBlock>
+                        <TextBlock x:Name="DoctorNameTB" Text="{x:Bind DoctorName}" Grid.Column="3"></TextBlock>
+                        <TextBlock Text="{x:Bind AppointmentStatus}" Grid.Column="4"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
         </ListView>
+        
     </Grid>
 </Page>

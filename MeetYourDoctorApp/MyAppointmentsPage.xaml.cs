@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MeetYourDoctorLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,8 +24,18 @@ namespace MeetYourDoctorApp
     /// </summary>
     public sealed partial class MyAppointmentsPage : Page
     {
+        private List<Appointment> _appointments = new List<Appointment>();
         public MyAppointmentsPage()
         {
+            var settingValues = ApplicationData.Current.LocalSettings.Values;
+            string patientUsername = "";
+            if (settingValues.ContainsKey("Username"))
+                patientUsername = settingValues["Username"].ToString();
+            _appointments = MainPage.AppointmentManager.AppointmentsOfPatient(patientUsername);
+            foreach (Appointment appointment in _appointments)
+            {
+                appointment.DoctorName = MainPage.AppointmentManager.GetDoctorName(appointment.DoctorUsername);
+            }
             this.InitializeComponent();
         }
     }

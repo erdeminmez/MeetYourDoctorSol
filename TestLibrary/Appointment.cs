@@ -13,7 +13,7 @@ namespace MeetYourDoctorLibrary
         Rejected
     }
     [DataContract]
-    public class Appointment
+    public class Appointment : IComparable<Appointment>
     {
         private Status _appointmentStatus;
         private DateTime _date;
@@ -128,5 +128,27 @@ namespace MeetYourDoctorLibrary
                 "4:30 PM"
             };
         }
+
+        public int CompareTo(Appointment other)
+        {
+            if (this.Date > other.Date)
+                return 1;
+            else if (this.Date < other.Date)
+                return -1;
+            else
+            {
+                int thisIndex = TimeSlots().FindIndex(a => a.Contains(this.TimeSlot));
+                int otherIndex = TimeSlots().FindIndex(a => a.Contains(other.TimeSlot));
+                if (thisIndex > otherIndex)
+                    return 1;
+                else if (thisIndex < otherIndex)
+                    return -1;
+                else
+                    return 0;
+            }                
+        }
+
+        public string DoctorName { get; set; }
+        
     }
 }

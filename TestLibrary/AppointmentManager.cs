@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace MeetYourDoctorLibrary
@@ -121,6 +122,28 @@ namespace MeetYourDoctorLibrary
                 }
             }
             return availableTimeSlots;
+        }
+
+        public List<Appointment> AppointmentsOfPatient(string patientUsername)
+        {
+            List<Appointment> appointmentsOfPatient = new List<Appointment>();
+            foreach (Appointment appointment in Appointments)
+            {
+                if (appointment.PatientUsername == patientUsername)
+                    appointmentsOfPatient.Add(appointment);
+            }
+            appointmentsOfPatient.Sort();
+            return appointmentsOfPatient;
+        }   
+        
+        public string GetDoctorName(string doctorUsername)
+        {
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.Username == doctorUsername)
+                    return doctor.FullName;
+            }
+            throw new Exception("There is no doctor with this username!");
         }
     }
 }

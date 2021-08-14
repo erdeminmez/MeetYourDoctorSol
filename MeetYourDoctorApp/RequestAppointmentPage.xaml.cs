@@ -51,35 +51,45 @@ namespace MeetYourDoctorApp
 
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _doctors = MainPage.AppointmentManager.ShowDoctorsOfBranch((Branch)Enum.Parse(typeof(Branch), BranchCB.SelectedItem.ToString()));
-            DoctorCB.ItemsSource = _doctors;
-            DoctorCB.DisplayMemberPath = "FullName";
-            DoctorCB.IsEnabled = true;
-            AppointmentDateDP.IsEnabled = false;
-            TimeCB.IsEnabled = false;
-            CreateAppointmateBtn.IsEnabled = false;
+            if (BranchCB.SelectedItem != null)
+            {
+                _doctors = MainPage.AppointmentManager.ShowDoctorsOfBranch((Branch)Enum.Parse(typeof(Branch), BranchCB.SelectedItem.ToString()));
+                DoctorCB.ItemsSource = _doctors;
+                DoctorCB.DisplayMemberPath = "FullName";
+                DoctorCB.IsEnabled = true;
+                AppointmentDateDP.IsEnabled = false;
+                TimeCB.IsEnabled = false;
+                CreateAppointmateBtn.IsEnabled = false;
+            }           
         }
 
         private void OnDoctorSelection(object sender, SelectionChangedEventArgs e)
         {
-            _selectedDoctor = DoctorCB.SelectedItem as Doctor;
-            if (_selectedDoctor != null)
-                AppointmentDateDP.IsEnabled = true;
-            TimeCB.IsEnabled = false;
-            CreateAppointmateBtn.IsEnabled = false;
+            if (DoctorCB.SelectedItem != null)
+            {
+                _selectedDoctor = DoctorCB.SelectedItem as Doctor;
+                if (_selectedDoctor != null)
+                    AppointmentDateDP.IsEnabled = true;
+                TimeCB.IsEnabled = false;
+                CreateAppointmateBtn.IsEnabled = false;
+            }           
         }
 
         private void OnSelectionDateChanged(DatePicker sender, DatePickerSelectedValueChangedEventArgs args)
         {
-            _selectedDate = AppointmentDateDP.Date.Date;
-            TimeCB.ItemsSource = MainPage.AppointmentManager.AvailableTimeSlots(_selectedDoctor.Username, _selectedDate);
-            TimeCB.IsEnabled = true;
-            CreateAppointmateBtn.IsEnabled = false;
+            if (AppointmentDateDP.SelectedDate != null)
+            {
+                _selectedDate = AppointmentDateDP.Date.Date;
+                TimeCB.ItemsSource = MainPage.AppointmentManager.AvailableTimeSlots(_selectedDoctor.Username, _selectedDate);
+                TimeCB.IsEnabled = true;
+                CreateAppointmateBtn.IsEnabled = false;
+            }
         }
 
         private void OnTimeSelected(object sender, SelectionChangedEventArgs e)
         {
-            CreateAppointmateBtn.IsEnabled = true;
+            if (TimeCB.SelectedItem != null)
+                CreateAppointmateBtn.IsEnabled = true;
         }
 
         private async void OnCreateAppointment(object sender, RoutedEventArgs e)
@@ -103,9 +113,13 @@ namespace MeetYourDoctorApp
         }
 
         private void UpdatePage()
-        {            
-            DoctorCB.IsEnabled = false;           
+        {
+            BranchCB.SelectedItem = null;
+            DoctorCB.SelectedItem = null;
+            DoctorCB.IsEnabled = false;
+            AppointmentDateDP.SelectedDate = null;
             AppointmentDateDP.IsEnabled = false;
+            TimeCB.SelectedItem = null;
             TimeCB.IsEnabled = false;
             CreateAppointmateBtn.IsEnabled = false;
         }      
