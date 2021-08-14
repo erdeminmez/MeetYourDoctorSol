@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MeetYourDoctorApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local1="using:MeetYourDoctorLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -19,6 +20,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.12*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0"
@@ -33,81 +35,48 @@
 
         <TextBlock Grid.Row="0"
                    Grid.Column="2"
-                   Text="Accept"
+                   Text="Patient Name"
                    Style="{StaticResource MyScheduleTBStyle}"></TextBlock>
 
         <TextBlock Grid.Row="0"
                    Grid.Column="3"
-                   Text="Reject"
+                   Text="Patient Birthay"
                    Style="{StaticResource MyScheduleTBStyle}"></TextBlock>
 
-        <ListView Grid.Row="1"
-                  Grid.Column="0">
-            <ListViewItem Content="2021-09-15"></ListViewItem>
-            <ListViewItem Content="2021-09-18"></ListViewItem>
-            <ListViewItem Content="2021-09-18"></ListViewItem>
-            <ListViewItem Content="21021-09-19"></ListViewItem>
-            <ListViewItem Content="2021-09-16"></ListViewItem>
-            <ListViewItem Content="2021-09-15"></ListViewItem>
-            <ListViewItem Content="2021-09-14"></ListViewItem>
-            <ListViewItem Content="2021-09-16"></ListViewItem>
-            <ListViewItem Content="2021-09-18"></ListViewItem>
-            <ListViewItem Content="2021-09-19"></ListViewItem>
-            <ListViewItem Content="2021-09-21"></ListViewItem>
-            <ListViewItem Content="2021-09-27"></ListViewItem>
-            <ListViewItem Content="2021-09-23"></ListViewItem>
-        </ListView>
+        <ListView x:Name="LstAppointments" 
+                  ItemsSource="{x:Bind _appointments}"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="5" SelectionChanged="OnSelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
 
-        <ListView Grid.Row="1"
-                  Grid.Column="1">
-            <ListViewItem Content="8:30 AM"></ListViewItem>
-            <ListViewItem Content="9:30 AM"></ListViewItem>
-            <ListViewItem Content="11:30 AM"></ListViewItem>
-            <ListViewItem Content="1:30 PM"></ListViewItem>
-            <ListViewItem Content="3:30 PM"></ListViewItem>
-            <ListViewItem Content="8:30 AM"></ListViewItem>
-            <ListViewItem Content="3:30 PM"></ListViewItem>
-            <ListViewItem Content="9:00 AM"></ListViewItem>
-            <ListViewItem Content="10:00 AM"></ListViewItem>
-            <ListViewItem Content="11:00 AM"></ListViewItem>
-            <ListViewItem Content="2:30 PM"></ListViewItem>
-            <ListViewItem Content="3:00 PM"></ListViewItem>
-            <ListViewItem Content="3:30 PM"></ListViewItem>
-            
-        </ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:Appointment">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind Date.ToShortDateString()}" Grid.Column="0"></TextBlock>
+                        <TextBlock Text="{x:Bind TimeSlot}" Grid.Column="1"></TextBlock>
+                        <TextBlock Text="{x:Bind PatientName}" Grid.Column="2"></TextBlock>
+                        <TextBlock Text="{x:Bind PatientBirthday.ToShortDateString()}" Grid.Column="3"></TextBlock>  
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
 
-        <ListView Grid.Row="1"
-                  Grid.Column="2" DoubleTapped="OnAccept">
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
-            <ListViewItem Content="Accept"></ListViewItem>
         </ListView>
-
-        <ListView Grid.Row="1"
-                  Grid.Column="3" DoubleTapped="OnReject">
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-            <ListViewItem Content="Reject"></ListViewItem>
-        </ListView>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="AcceptBtn" Content="Accept" Margin="20" Width="150" CornerRadius="10" Click="OnAccept" IsEnabled="False"></Button>
+            <Button x:Name="RejectBtn" Content="Reject" Margin="20" Width="150" CornerRadius="10" Click="OnReject" IsEnabled="False"></Button>
+        </StackPanel>
+        
+        
     </Grid>
 </Page>

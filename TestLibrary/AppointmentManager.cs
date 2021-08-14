@@ -145,5 +145,49 @@ namespace MeetYourDoctorLibrary
             }
             throw new Exception("There is no doctor with this username!");
         }
+
+        public string GetPatientName(string patientUsername)
+        {
+            foreach (Patient patient in Patients)
+            {
+                if (patient.Username == patientUsername)
+                    return patient.FullName;
+            }
+            throw new Exception("There is no patient with this username!");
+        }
+
+        public DateTime GetPatientBirthday(string patientUsername)
+        {
+            foreach (Patient patient in Patients)
+            {
+                if (patient.Username == patientUsername)
+                    return patient.Birthday;
+            }
+            throw new Exception("There is no patient with this username!");
+        }
+
+        public ObservableCollection<Appointment> PendingAppointmentsOfDoctor(string doctorUsername)
+        {
+            ObservableCollection<Appointment> pendingAppointmentsOfDoctor = new ObservableCollection<Appointment>();
+            _appointments.Sort();
+            foreach (Appointment appointment in Appointments)
+            {
+                if (appointment.AppointmentStatus == Status.Pending)
+                {
+                    if (appointment.DoctorUsername == doctorUsername)
+                        pendingAppointmentsOfDoctor.Add(appointment);
+                }                
+            }
+            return pendingAppointmentsOfDoctor;
+        }
+
+        public void UpdateStatusOfAppointment(Appointment otherAppointment, Status status)
+        {
+            foreach (Appointment appointment in Appointments)
+            {
+                if(appointment.Equals(otherAppointment))
+                    appointment.AppointmentStatus = status;
+            }
+        }
     }
 }

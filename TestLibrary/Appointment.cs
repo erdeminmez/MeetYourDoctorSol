@@ -149,6 +149,18 @@ namespace MeetYourDoctorLibrary
         }
 
         public string DoctorName { get; set; }
-        
+        public string PatientName { get; set; }
+        public DateTime PatientBirthday { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Appointment appointment = obj as Appointment;
+            if(appointment != null)
+            {
+                if (appointment.DoctorUsername == DoctorUsername && appointment.Date == Date && appointment.TimeSlot == TimeSlot)
+                    return true;
+            }
+            return false;
+        }
     }
 }
