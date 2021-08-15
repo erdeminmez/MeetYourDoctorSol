@@ -87,17 +87,25 @@ namespace MeetYourDoctorApp
             DoctorScheduleItem item = LstSchedule.SelectedItem as DoctorScheduleItem;
             if (item != null)
             {
-                int i = LstSchedule.SelectedIndex;
-                string str = _schedule[i].TimeSlot;
-                _schedule.RemoveAt(i);
-                _schedule.Insert(i, new DoctorScheduleItem(str, ""));
-                Appointment appointment = MainPage.AppointmentManager.GetAppointment(_doctorUsername, _selectedDate, _schedule[i].TimeSlot);
-                MainPage.AppointmentManager.UpdateStatusOfAppointment(appointment, Status.Rejected);
-                MainPage.AppointmentManager.SaveAppointmentData(MainPage.AppointmentDataManager);
-                GetInfoBtn.IsEnabled = false;
-                CancelBtn.IsEnabled = false;
-                MessageDialog messageDialog = new MessageDialog($"The appointment is canceled!");
-                await messageDialog.ShowAsync();
+                if (_selectedDate < DateTime.Today)
+                {
+                    MessageDialog messageDialog = new MessageDialog("You cannot cancel a past appointment!");
+                    await messageDialog.ShowAsync();
+                }
+                else
+                {
+                    int i = LstSchedule.SelectedIndex;
+                    string str = _schedule[i].TimeSlot;
+                    _schedule.RemoveAt(i);
+                    _schedule.Insert(i, new DoctorScheduleItem(str, ""));
+                    Appointment appointment = MainPage.AppointmentManager.GetAppointment(_doctorUsername, _selectedDate, _schedule[i].TimeSlot);
+                    MainPage.AppointmentManager.UpdateStatusOfAppointment(appointment, Status.Rejected);
+                    MainPage.AppointmentManager.SaveAppointmentData(MainPage.AppointmentDataManager);
+                    GetInfoBtn.IsEnabled = false;
+                    CancelBtn.IsEnabled = false;
+                    MessageDialog messageDialog = new MessageDialog("The appointment is canceled!");
+                    await messageDialog.ShowAsync();
+                }               
             }
         }
 
