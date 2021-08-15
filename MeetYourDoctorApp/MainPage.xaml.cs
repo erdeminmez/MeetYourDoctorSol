@@ -55,7 +55,12 @@ namespace MeetYourDoctorApp
                     ApplicationData.Current.LocalSettings.Values["Username"] = UsernameTB.Text;
                     Frame.Navigate(typeof(DoctorMainPage));
                 }
-                    
+                else
+                {
+                    MessageDialog messageDialog = new MessageDialog("Invalid entries!");
+                    await messageDialog.ShowAsync();
+                }
+
             }
             else if ((UserTypeCB.SelectedItem as ComboBoxItem).Content.ToString() == "Patient")
             {
@@ -64,12 +69,12 @@ namespace MeetYourDoctorApp
                     ApplicationData.Current.LocalSettings.Values["Username"] = UsernameTB.Text;
                     Frame.Navigate(typeof(PatientMainPage));
                 }
-            }
-            else
-            {
-                MessageDialog messageDialog = new MessageDialog("Invalid entries!");
-                await messageDialog.ShowAsync();
-            }           
+                else
+                {
+                    MessageDialog messageDialog = new MessageDialog("Invalid entries!");
+                    await messageDialog.ShowAsync();
+                }
+            }       
         }
 
         private void OnCreateDoctorAcc(object sender, RoutedEventArgs e)
