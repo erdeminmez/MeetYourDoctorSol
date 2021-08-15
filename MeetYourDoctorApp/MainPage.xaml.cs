@@ -22,7 +22,8 @@ using Windows.UI.Popups;
 namespace MeetYourDoctorApp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This page is welcome page for the user. The user can login its account or if it has not an account, it can create an account for itself. This can be doctor or patient account. 
     /// </summary>
     public sealed partial class MainPage : Page
     {

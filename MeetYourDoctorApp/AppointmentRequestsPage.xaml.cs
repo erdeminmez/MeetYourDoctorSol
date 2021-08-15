@@ -22,7 +22,8 @@ using Windows.UI.Xaml.Navigation;
 namespace MeetYourDoctorApp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This page is an acception or rejection page for coming appointent requests to the doctor who is owner of the account. Doctor can accept or reject appointments here.
     /// </summary>
     public sealed partial class AppointmentRequestsPage : Page
     {

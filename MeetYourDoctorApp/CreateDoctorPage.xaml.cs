@@ -20,7 +20,8 @@ using Windows.UI.Xaml.Navigation;
 namespace MeetYourDoctorApp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This page is used to create a doctor account.
     /// </summary>
     public sealed partial class CreateDoctorPage : Page
     {

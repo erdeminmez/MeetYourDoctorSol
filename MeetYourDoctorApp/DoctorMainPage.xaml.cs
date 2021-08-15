@@ -19,7 +19,8 @@ using Windows.UI.Xaml.Navigation;
 namespace MeetYourDoctorApp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This page is welcome page for the owner of a doctor account. Directs you to your schedule page or acception page for coming appointment requests.
     /// </summary>
     public sealed partial class DoctorMainPage : Page
     {

@@ -23,7 +23,8 @@ using Windows.UI.Xaml.Navigation;
 namespace MeetYourDoctorApp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This page is a doctor's schedule page. Doctor can see its daily schedule by selecting a date. It can also get information of the patient of an appointment or cancel an appointment.
     /// </summary>
     public sealed partial class MySchedulePage : Page
     {

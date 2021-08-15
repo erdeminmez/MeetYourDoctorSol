@@ -21,7 +21,8 @@ using Windows.UI.Xaml.Navigation;
 namespace MeetYourDoctorApp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This page lists all the appointments of the patient who is owner of the account. The patient can also get information of doctor for its appointment.
     /// </summary>
     public sealed partial class MyAppointmentsPage : Page
     {
