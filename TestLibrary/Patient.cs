@@ -6,6 +6,10 @@ using System.Runtime.Serialization;
 
 namespace MeetYourDoctorLibrary
 {
+    /// <summary>
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This is patient class. Create patient objects.
+    /// </summary>
     [DataContract]
     public class Patient
     {

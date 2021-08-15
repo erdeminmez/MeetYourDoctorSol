@@ -7,6 +7,10 @@ using System.Text;
 
 namespace MeetYourDoctorLibrary
 {
+    /// <summary>
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This is AppointmentManager class. Create lists of doctor, patient and appointment. Creates doctor, patient and appointments and putting them to lists. Also save and read datas with the help of data layer and data interfaces. Give information about the objects when it is required like patient info.
+    /// </summary>
     public class AppointmentManager
     {
         private List<Doctor> _doctors = new List<Doctor>();

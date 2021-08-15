@@ -7,6 +7,10 @@ using System.Text;
 
 namespace MeetYourDoctorData
 {
+    /// <summary>
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This is appointment data manager class which uses json file. Reads and saves data related to appointments.
+    /// </summary>
     public class AppointmentJsonDataManager : IAppointmentDataManager
     {
         private string _fileName;

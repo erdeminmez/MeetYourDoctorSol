@@ -6,6 +6,10 @@ using System.Runtime.Serialization;
 
 namespace MeetYourDoctorLibrary
 {
+    /// <summary>
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This is appointment class. Create appointment objects.
+    /// </summary>
     public enum Status
     {
         Pending,

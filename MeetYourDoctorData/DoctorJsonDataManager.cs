@@ -7,6 +7,10 @@ using System.Text;
 
 namespace MeetYourDoctorData
 {
+    /// <summary>
+    /// Principal Author: Erdem Inmez
+    /// Short Description: This is doctor data manager class which uses json file. Reads and saves data related to doctors.
+    /// </summary>
     public class DoctorJsonDataManager : IDoctorDataManager
     {
         private string _fileName;
