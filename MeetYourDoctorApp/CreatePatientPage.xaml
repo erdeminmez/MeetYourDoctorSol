@@ -61,11 +61,12 @@
                      PlaceholderText="Health Card Number"
                      Style="{StaticResource CreateAccountTextBoxStyle}"></TextBox>
                 <DatePicker x:Name="BirthdayDP"
-                        Height="45"
+                        Height="90"
                         Width="300"
                         FontSize="24"
                         Margin="10"
-                        Background="LightSkyBlue" SelectedDateChanged="OnSelectedDateChanged"></DatePicker>
+                        Background="LightSkyBlue"        SelectedDateChanged="OnSelectedDateChanged"
+                            Header="Birthday"></DatePicker>
             </StackPanel>
             
         </StackPanel>

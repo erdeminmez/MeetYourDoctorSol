@@ -52,7 +52,7 @@
                   ItemsSource="{x:Bind _appointments, Mode=OneWay}"
                   Grid.Row="1"
                   Grid.Column="0"
-                  Grid.ColumnSpan="6">
+                  Grid.ColumnSpan="6" DoubleTapped="OnDoubleTapped">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

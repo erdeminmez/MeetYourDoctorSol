@@ -32,7 +32,7 @@
                        Margin="0,0,10,0">
             </TextBlock>
 
-            <DatePicker x:Name="DateDP" SelectedDateChanged="OnDateChanged"></DatePicker>
+            <DatePicker x:Name="DateDP" SelectedDateChanged="OnDateChanged" Tapped="OnTapped"></DatePicker>
 
         </StackPanel>
 

@@ -228,5 +228,15 @@ namespace MeetYourDoctorLibrary
             }
             throw new Exception("There is no such appointment!");
         }
+
+        public string GetDoctorInfo(string doctorUsername)
+        {
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.Username == doctorUsername)
+                    return doctor.ToString();
+            }
+            return "";
+        }
     }
 }

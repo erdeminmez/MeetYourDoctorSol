@@ -138,11 +138,11 @@ namespace MeetYourDoctorLibrary
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new Exception("You must enter a contact number that contains 6 characters!");
+                    throw new Exception("You must enter a postal code that contains 6 characters!");
                 }
                 else if (value.Length != 6)
                 {
-                    throw new Exception("You must enter a contact number that contains 6 characters!");
+                    throw new Exception("You must enter a postal code that contains 6 characters!");
                 }
                 else
                 {

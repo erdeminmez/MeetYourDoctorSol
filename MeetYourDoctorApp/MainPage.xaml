@@ -106,7 +106,7 @@
                 >Create Patient Account
         </Button>
 
-        <TextBlock x:Name="Test" Grid.Row="8"></TextBlock>
+        <TextBlock x:Name="TxtError" Grid.Row="8" HorizontalAlignment="Center"></TextBlock>
 
     </Grid>
 </Page>

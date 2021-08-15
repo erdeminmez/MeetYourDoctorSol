@@ -54,7 +54,7 @@ namespace MeetYourDoctorApp
             if (settingValues.ContainsKey("Username"))
             {
                 username = settingValues["Username"].ToString();
-                TxtDoc.Text = username;
+                TxtDoc.Text = "Welcome " + username;
             }
 
         }

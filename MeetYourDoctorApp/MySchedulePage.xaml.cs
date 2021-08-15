@@ -110,5 +110,11 @@ namespace MeetYourDoctorApp
                 CancelBtn.IsEnabled = true;
             }          
         }
+
+        private void OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            GetInfoBtn.IsEnabled = false;
+            CancelBtn.IsEnabled = false;
+        }
     }
 }

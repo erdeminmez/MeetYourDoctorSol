@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -39,6 +40,14 @@ namespace MeetYourDoctorApp
             this.InitializeComponent();
         }
 
-        
+        private async void OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Appointment appointment = LstAppointments.SelectedItem as Appointment;
+            if (appointment != null)
+            {
+                MessageDialog messageDialog = new MessageDialog(MainPage.AppointmentManager.GetDoctorInfo(appointment.DoctorUsername));
+                await messageDialog.ShowAsync();
+            }
+        }
     }
 }
