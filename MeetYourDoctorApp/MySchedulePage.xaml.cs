@@ -76,7 +76,7 @@ namespace MeetYourDoctorApp
         private async void OnInfo(object sender, RoutedEventArgs e)
         {
             DoctorScheduleItem item = LstSchedule.SelectedItem as DoctorScheduleItem;
-            if (item != null)
+            if (item != null && item.PatientName != "")
             {
                 MessageDialog messageDialog = new MessageDialog(MainPage.AppointmentManager.GetPatientInfo(item.PatientName));
                 await messageDialog.ShowAsync();
@@ -86,7 +86,7 @@ namespace MeetYourDoctorApp
         private async void OnCancel(object sender, RoutedEventArgs e)
         {
             DoctorScheduleItem item = LstSchedule.SelectedItem as DoctorScheduleItem;
-            if (item != null)
+            if (item != null && item.PatientName != "")
             {
                 if (_selectedDate < DateTime.Today)
                 {
